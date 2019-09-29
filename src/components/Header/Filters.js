@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadGenres, loadMovies } from '../../actionCreators';
-import { url } from '../consts/Urls';
 
 class Searchbar extends Component {
 
@@ -9,12 +8,12 @@ class Searchbar extends Component {
     super(props);
     this.state = {
       genre: "elija",
-      year: ""
+      year: "elija"
     }
   }
 
   componentDidMount(){
-    this.props.loadGenres(url);
+    this.props.loadGenres(this.props.type);
   }
 
   handleChange = event => {
@@ -25,7 +24,7 @@ class Searchbar extends Component {
 
     let index = event.target.selectedIndex;
     let id = event.target.childNodes[index].getAttribute('data-id');
-    this.props.loadMovies(id);    
+    this.props.loadMovies(id, this.props.type);    
   }
 
   render() {
@@ -58,7 +57,8 @@ class Searchbar extends Component {
 }
 
 const mapStateToProps = state => ({
-  genres: state.genres
+  genres: state.genres,
+  type: state.type
 });
     
 const mapDispatchToProps = {  

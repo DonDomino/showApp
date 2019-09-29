@@ -56,12 +56,12 @@
   li{
     margin-right: 20px;
   } 
-  li a{
+  li span{
     font-size: 1.6rem;
     color: #9fb0b7;
-    text-decoration: none;
+    cursor: pointer;
   }
-  a:hover{
+  span:hover{
     color: #00bdff;
   }  
   .active{
@@ -147,6 +147,9 @@
   .right{
     width: 70%;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .titleWrapper{
     margin-bottom: 20px;
