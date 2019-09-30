@@ -14,6 +14,16 @@ class Searchbar extends Component {
 
   componentDidMount(){
     this.props.loadGenres(this.props.type);
+    this.handleYears();
+  }
+
+  handleYears = () => {
+    for(let i = 1990; i <= 2019; i++){
+      let node = document.createElement('option');
+      let textnode = document.createTextNode(i);
+      node.appendChild(textnode);   
+      document.querySelector("#years").appendChild(node);
+    }
   }
 
   handleChange = event => {
@@ -24,7 +34,7 @@ class Searchbar extends Component {
 
     let index = event.target.selectedIndex;
     let id = event.target.childNodes[index].getAttribute('data-id');
-    this.props.loadMovies(id, this.props.type);    
+    this.props.loadMovies(id, this.props.type, this.state.year);    
   }
 
   render() {
@@ -33,8 +43,8 @@ class Searchbar extends Component {
         <div className="filterWrapper">
           <p>Año</p>
           <div className="customSelect">
-            <select>
-              <option>Elija</option>
+            <select name="year" id="years" value={this.state.year} onChange={this.handleChange}>
+              <option disabled value='elija'>Elija...</option>
             </select>
             <i className="fas fa-angle-down"></i>
           </div>

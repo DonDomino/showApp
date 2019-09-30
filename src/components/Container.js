@@ -5,6 +5,11 @@ import EllipsisText from "react-ellipsis-text";
 
 class Container extends Component {
 
+  handleFavs = (id, e) => {
+    e.target.nextSibling.classList.add('fav')
+    localStorage.setItem(id, this.props.type);
+  }
+
   render() {
     return (
       <div className="main container">
@@ -32,9 +37,9 @@ class Container extends Component {
               </div>
               <div className="movieFooter">
                 <button className="button">Ver Trailer</button>
-                <div className="favWrapper">
+                <div onClick={this.handleFavs.bind(this, movie.id)} className="favWrapper">
                   <span>Agregar a favoritos</span>
-                  <i className="fas fa-heart"></i>
+                  <i className={localStorage[movie.id] ? "fas fa-heart fav" : "fas fa-heart" } ></i>
                 </div>
               </div>
             </div>
@@ -46,7 +51,8 @@ class Container extends Component {
 }
 
 const mapStateToProps = state => ({
-  movies: state.movies
+  movies: state.movies,
+  type: state.type
 });
 
 const mapDispatchToProps = {

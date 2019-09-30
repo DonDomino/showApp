@@ -85,6 +85,7 @@
     color: #bccace;
   }
   input{
+    width: 80%;
     padding: 20px 0 15px 60px;
     font-size: 1.4rem;
     font-style: italic;
@@ -192,6 +193,7 @@
     cursor: pointer;
   }
   .favWrapper{
+    cursor: pointer;
     span{
       margin-right: 20px;
       color: #87969c;
@@ -200,6 +202,9 @@
     i{
       color: #bdc5c9;
       font-size: 1.5rem;
+    }
+    .fav{
+      color: red;
     }
   }
 
